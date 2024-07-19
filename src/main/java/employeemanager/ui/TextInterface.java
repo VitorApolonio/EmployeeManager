@@ -60,14 +60,6 @@ public class TextInterface {
         System.out.println();
     }
 
-    private void printEmployeeMenu() {
-        System.out.println("[1] Ver informações sobre funcionário");
-        System.out.println("[2] Alterar cargo do funcionário");
-        System.out.println("[3] Alterar salário do funcionário");
-        System.out.println("[x] Voltar");
-        System.out.println();
-    }
-
     private void printEmployeeList() {
         if (manager.getEmployees().isEmpty()) {
             System.out.println("Nenhum funcionário no sistema.");
