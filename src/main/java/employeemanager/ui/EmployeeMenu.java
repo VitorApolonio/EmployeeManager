@@ -43,6 +43,8 @@ public class EmployeeMenu {
     }
 
     private void printMenu() {
+        System.out.println(employee.getName() + " - Funcionário");
+        System.out.println();
         System.out.println("[1] Ver informações sobre funcionário");
         System.out.println("[2] Alterar cargo do funcionário");
         System.out.println("[3] Alterar salário do funcionário");
