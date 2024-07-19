@@ -17,6 +17,8 @@ public class TextInterface {
     }
 
     public void start() {
+        printHeader();
+
         mainLoop: while (true) {
             printMenu();
             System.out.print("> ");
@@ -41,6 +43,13 @@ public class TextInterface {
                     System.out.println();
             }
         }
+    }
+
+    private void printHeader() {
+        System.out.println("*******************************");
+        System.out.println("* Gerenciador de Funcionários *");
+        System.out.println("*******************************");
+        System.out.println();
     }
 
     private void printMenu() {
