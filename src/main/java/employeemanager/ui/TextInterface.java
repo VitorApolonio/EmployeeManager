@@ -54,23 +54,24 @@ public class TextInterface {
         System.out.println("[4] Remover funcionário da lista");
         System.out.println("[x] Sair");
         System.out.println();
-
-        if (manager.getEmployees().size() == 1) {
-            System.out.println("Atualmente a empresa possui 1 funcionário.");
-        } else {
-            System.out.println("Atualmente a empresa possui " + manager.getEmployees().size() + " funcionários.");
-        }
-
-        System.out.println();
     }
 
     private void printEmployeeList() {
         if (manager.getEmployees().isEmpty()) {
-            System.out.println("Nenhum funcionário no sistema.");
+            System.out.println("A empresa não possui funcionários.");
         } else {
             for (Employee employee : manager.getEmployees().values()) {
                 System.out.println(employee);
             }
+
+            System.out.println();
+
+            if (manager.getEmployees().size() == 1) {
+                System.out.println("A empresa possui 1 funcionário.");
+            } else {
+                System.out.println("A empresa possui " + manager.getEmployees().size() + " funcionários.");
+            }
+
             System.out.print("[Continuar]");
             scanner.nextLine();
         }
