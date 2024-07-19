@@ -1,6 +1,7 @@
 package employeemanager.domain;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Objects;
 
 public class Employee {
@@ -48,6 +49,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return name + ", " + jobTitle + ", $" + salary;
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        String formattedSalary = currencyFormat.format(salary);
+
+        return name + ", " + jobTitle + ", " + formattedSalary;
     }
 }
