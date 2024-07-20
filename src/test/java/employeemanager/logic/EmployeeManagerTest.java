@@ -4,6 +4,7 @@ import employeemanager.domain.Employee;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -99,6 +100,33 @@ class EmployeeManagerTest {
         String fileContent = Files.readString(Path.of(fileName));
 
         Assertions.assertEquals(expected, fileContent);
+
+        Files.deleteIfExists(Path.of(fileName));
+    }
+
+    @Test
+    void load_reads_from_file() throws IOException {
+        EmployeeManager manager = new EmployeeManager();
+
+        Random rand = new Random();
+        String fileName = "_loadtest_" + rand.nextInt(800) + ".txt";
+
+        FileWriter writer = new FileWriter(fileName);
+
+        String testContent = """
+                Bob,HR Manager,2000
+                John,CEO,15000
+                Alice,HR Supervisor,3000
+                """;
+
+        writer.write(testContent);
+        writer.close();
+
+        manager.load(fileName);
+
+        Assertions.assertTrue(manager.hasEmployee("Bob"));
+        Assertions.assertTrue(manager.hasEmployee("John"));
+        Assertions.assertTrue(manager.hasEmployee("Alice"));
 
         Files.deleteIfExists(Path.of(fileName));
     }
