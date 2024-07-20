@@ -11,9 +11,9 @@ public class TextInterface {
     private final Scanner scanner;
     private final EmployeeManager manager;
 
-    public TextInterface(Scanner scanner) {
+    public TextInterface(Scanner scanner, EmployeeManager manager) {
         this.scanner = scanner;
-        manager = new EmployeeManager();
+        this.manager = manager;
     }
 
     public void start() {
@@ -31,6 +31,9 @@ public class TextInterface {
                     break;
                 case "3":
                     addEmployee();
+                    break;
+                case "4":
+                    removeEmployee();
                     break;
                 case "x":
                 case "X":
@@ -128,6 +131,32 @@ public class TextInterface {
         manager.add(newEmployee);
 
         System.out.println("Funcionário adicionado com sucesso.");
+        System.out.println();
+    }
+
+    private void removeEmployee() {
+        if (manager.getEmployees().isEmpty()) {
+            System.out.println("A empresa não possui funcionários.");
+        } else {
+            System.out.print("Nome do funcionário: ");
+            String name = scanner.nextLine().strip();
+
+            if (manager.getEmployees().containsKey(name)) {
+                System.out.println("Tem certeza que deseja remover o funcionário " + name + " do sistema? (s/N) ");
+                System.out.print("> ");
+                String confirmation = scanner.nextLine().strip();
+
+                if ("s".equalsIgnoreCase(confirmation) || "sim".equalsIgnoreCase(confirmation)) {
+                    manager.remove(name);
+                    System.out.println("Funcionário removido com sucesso.");
+                } else {
+                    System.out.println("Operação cancelada pelo usuário.");
+                }
+            } else {
+                System.out.println("Funcionário " + name + " não encontrado.");
+            }
+        }
+
         System.out.println();
     }
 }
