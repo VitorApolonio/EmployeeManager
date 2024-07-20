@@ -58,4 +58,15 @@ class EmployeeManagerTest {
 
         Assertions.assertNull(manager.findByName("Bob"));
     }
+
+    @Test
+    void hasEmployee_returns_correctly() {
+        EmployeeManager manager = new EmployeeManager();
+        Employee john = new Employee("John Doe", "HR Manager", new BigDecimal("8000.00"));
+
+        manager.add(john);
+
+        Assertions.assertTrue(manager.hasEmployee("John Doe"));
+        Assertions.assertFalse(manager.hasEmployee("John Smith"));
+    }
 }
