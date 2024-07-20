@@ -93,7 +93,7 @@ public class TextInterface {
         String name = scanner.nextLine().strip();
         System.out.println();
 
-        if (manager.getEmployees().containsKey(name)) {
+        if (manager.hasEmployee(name)) {
             Employee employee = manager.findByName(name);
             EmployeeMenu employeeMenu = new EmployeeMenu(scanner, employee);
 
@@ -141,7 +141,7 @@ public class TextInterface {
             System.out.print("Nome do funcionário: ");
             String name = scanner.nextLine().strip();
 
-            if (manager.getEmployees().containsKey(name)) {
+            if (manager.hasEmployee(name)) {
                 System.out.println("Tem certeza que deseja remover o funcionário " + name + " do sistema? (s/N) ");
                 System.out.print("> ");
                 String confirmation = scanner.nextLine().strip();

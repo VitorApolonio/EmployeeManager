@@ -24,6 +24,10 @@ public class EmployeeManager {
         return employees.get(name);
     }
 
+    public boolean hasEmployee(String name) {
+        return employees.containsKey(name);
+    }
+
     public boolean remove(String name) {
         if (employees.containsKey(name)) {
             employees.remove(name);

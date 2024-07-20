@@ -156,7 +156,7 @@ class TextInterfaceTest {
 
         text.start();
 
-        Assertions.assertFalse(manager.getEmployees().containsKey("John Smith"));
+        Assertions.assertFalse(manager.hasEmployee("John Smith"));
     }
 
     @Test
