@@ -70,7 +70,7 @@ public class EmployeeManager {
                 readEmployees.add(employee);
             }
 
-            readEmployees.stream().forEach(e -> employees.put(e.getName(), e));
+            readEmployees.forEach(e -> employees.put(e.getName(), e));
 
             return true;
         } catch (Exception e) {

@@ -4,6 +4,7 @@ import employeemanager.domain.Employee;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -99,9 +100,9 @@ class EmployeeManagerTest {
 
         String fileContent = Files.readString(Path.of(fileName));
 
-        Assertions.assertEquals(expected, fileContent);
+        Files.delete(Path.of(fileName));
 
-        Files.deleteIfExists(Path.of(fileName));
+        Assertions.assertEquals(expected, fileContent);
     }
 
     @Test
@@ -109,25 +110,27 @@ class EmployeeManagerTest {
         EmployeeManager manager = new EmployeeManager();
 
         Random rand = new Random();
-        String fileName = "_loadtest_" + rand.nextInt(800) + ".txt";
+        String fileName = "_loadtest_" + rand.nextInt(800) + ".csv";
 
-        FileWriter writer = new FileWriter(fileName);
+        File file = new File(fileName);
+        file.createNewFile();
 
         String testContent = """
-                Bob,HR Manager,2000
-                John,CEO,15000
-                Alice,HR Supervisor,3000
-                """;
+            Bob,HR Manager,2000
+            John,CEO,15000
+            Alice,HR Supervisor,3000
+            """;
 
+        FileWriter writer = new FileWriter(fileName);
         writer.write(testContent);
         writer.close();
 
         manager.load(fileName);
 
+        file.delete();
+
         Assertions.assertTrue(manager.hasEmployee("Bob"));
         Assertions.assertTrue(manager.hasEmployee("John"));
         Assertions.assertTrue(manager.hasEmployee("Alice"));
-
-        Files.deleteIfExists(Path.of(fileName));
     }
 }

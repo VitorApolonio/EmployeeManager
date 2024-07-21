@@ -3,6 +3,7 @@ package employeemanager.ui;
 import employeemanager.domain.Employee;
 import employeemanager.logic.EmployeeManager;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
@@ -35,6 +36,12 @@ public class TextInterface {
                 case "4":
                     removeEmployee();
                     break;
+                case "5":
+                    saveEmployeeList();
+                    break;
+                case "6":
+                    loadEmployeeList();
+                    break;
                 case "x":
                 case "X":
                     System.out.println("Saindo...");
@@ -55,6 +62,8 @@ public class TextInterface {
         System.out.println("[2] Encontrar funcionário por nome");
         System.out.println("[3] Adicionar funcionário a lista");
         System.out.println("[4] Remover funcionário da lista");
+        System.out.println("[5] Salvar lista de funcionários");
+        System.out.println("[6] Carregar lista de funcionários");
         System.out.println("[x] Sair");
         System.out.println();
     }
@@ -155,6 +164,50 @@ public class TextInterface {
             } else {
                 System.out.println("Funcionário " + name + " não encontrado.");
             }
+        }
+
+        System.out.println();
+    }
+
+    private void saveEmployeeList() {
+        if (manager.getEmployees().isEmpty()) {
+            System.out.println("A empresa não possui funcionários.");
+        } else {
+            System.out.print("Digite um nome para o arquivo (Enter para cancelar): ");
+            String fileName = scanner.nextLine().strip();
+
+            if (fileName.isBlank()) {
+                System.out.println("Operação cancelada pelo usuário.");
+            } else {
+                boolean successful = manager.save(fileName + ".csv");
+
+                if (successful) {
+                    System.out.println(fileName + ".csv salvo com sucesso.");
+                } else {
+                    System.out.println("Algo deu errado.");
+                }
+            }
+        }
+
+        System.out.println();
+    }
+
+    private void loadEmployeeList() {
+        System.out.print("Nome do arquivo: ");
+        String fileName = scanner.nextLine().strip();
+
+        File file = new File(fileName + ".csv");
+
+        if (file.isFile()) {
+            boolean successful = manager.load(fileName + ".csv");
+
+            if (successful) {
+                System.out.println("Lista de funcionários carregada com sucesso.");
+            } else {
+                System.out.println("Algo deu errado.");
+            }
+        } else {
+            System.out.println("Arquivo " + fileName + ".csv não encontrado.");
         }
 
         System.out.println();
