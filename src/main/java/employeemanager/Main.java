@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         // This is done so the scanner can read portuguese characters correctly
         boolean isWindows = System.getProperty("os.name").startsWith("Windows");
-        String encoding = isWindows ? "Windows-1252" : "UTF-8";
+        String encoding = isWindows ? "cp850" : "UTF-8";
 
         Scanner scanner = new Scanner(System.in, encoding);
 
