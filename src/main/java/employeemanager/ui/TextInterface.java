@@ -48,6 +48,7 @@ public class TextInterface {
                     break mainLoop;
                 default:
                     System.out.println("Opção inválida.");
+                    printContinueButton();
                     System.out.println();
             }
         }

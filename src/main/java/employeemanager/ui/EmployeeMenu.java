@@ -37,13 +37,19 @@ public class EmployeeMenu {
                     break menuLoop;
                 default:
                     System.out.println("Opção inválida.");
+                    printContinueButton();
                     System.out.println();
             }
         }
     }
 
     private void printMenu() {
-        System.out.println(employee.getName() + " - Funcionário");
+        String title = "* " + employee.getName() + " - Funcionário *";
+
+        // I use repeat here to make sure the amount of asterisks varies with employee name length
+        System.out.println("*".repeat(title.length()));
+        System.out.println(title);
+        System.out.println("*".repeat(title.length()));
         System.out.println();
         System.out.println("[1] Ver informações sobre funcionário");
         System.out.println("[2] Alterar cargo do funcionário");
