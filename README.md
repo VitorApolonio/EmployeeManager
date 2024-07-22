@@ -19,3 +19,7 @@ The program allows for the following:
 - Removing employees from the list
 - Loading employee list from a file
 - Saving employee list to a file
+
+## Build
+
+Run `mvnw package` to create a jar in the `target/` folder
