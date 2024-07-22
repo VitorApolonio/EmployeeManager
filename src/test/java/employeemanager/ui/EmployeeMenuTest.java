@@ -27,6 +27,7 @@ class EmployeeMenuTest {
             
             > \
             """;
+    String continueButtonText = "[Aperte Enter para continuar]\n";
 
     @BeforeEach
     void setUp() {
@@ -68,8 +69,8 @@ class EmployeeMenuTest {
                 Nome: John Smith
                 Cargo: HR Manager
                 Salário: R$\u00A03.000,00
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu);
 
         employeeMenu.start();
@@ -82,6 +83,7 @@ class EmployeeMenuTest {
         String input = """
                 2
                 Chief Executive Officer
+                
                 x
                 """;
 
@@ -92,9 +94,10 @@ class EmployeeMenuTest {
                 """
                 Cargo atual: HR Manager
                 Novo cargo (Enter para não alterar): \
-                Cargo atualizado com sucesso.
                 
+                Cargo atualizado com sucesso.
                 """ +
+                continueButtonText +
                 menu);
 
         employeeMenu.start();
@@ -107,6 +110,7 @@ class EmployeeMenuTest {
         String input = """
                 2
                 Chief Executive Officer
+                
                 x
                 """;
 
@@ -123,6 +127,7 @@ class EmployeeMenuTest {
         String input = """
                 3
                 12000
+                
                 x
                 """;
 
@@ -133,9 +138,10 @@ class EmployeeMenuTest {
                 """
                 Salário atual: R$\u00A03.000,00
                 Novo salário (Enter para não alterar): \
-                Salário atualizado com sucesso.
                 
+                Salário atualizado com sucesso.
                 """ +
+                continueButtonText +
                 menu);
 
         employeeMenu.start();
@@ -148,6 +154,7 @@ class EmployeeMenuTest {
         String input = """
                 3
                 12000
+                
                 x
                 """;
 

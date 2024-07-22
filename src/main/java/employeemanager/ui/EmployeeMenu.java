@@ -59,9 +59,8 @@ public class EmployeeMenu {
         System.out.println("Nome: " + employee.getName());
         System.out.println("Cargo: " + employee.getJobTitle());
         System.out.println("Salário: " + currencyFormat.format(employee.getSalary()));
-        System.out.print("[Continuar]");
-        scanner.nextLine();
 
+        printContinueButton();
         System.out.println();
     }
 
@@ -75,6 +74,7 @@ public class EmployeeMenu {
                 System.out.println("Salário atual: " + currencyFormat.format(employee.getSalary()));
                 System.out.print("Novo salário (Enter para não alterar): ");
                 String input = scanner.nextLine().strip();
+                System.out.println();
 
                 if (input.isBlank()) {
                     System.out.println("Salário não alterado.");
@@ -94,6 +94,7 @@ public class EmployeeMenu {
             }
         }
 
+        printContinueButton();
         System.out.println();
     }
 
@@ -101,6 +102,7 @@ public class EmployeeMenu {
         System.out.println("Cargo atual: " + employee.getJobTitle());
         System.out.print("Novo cargo (Enter para não alterar): ");
         String jobTitle = scanner.nextLine().strip();
+        System.out.println();
 
         if (jobTitle.trim().isBlank()) {
             System.out.println("Cargo não alterado.");
@@ -110,6 +112,12 @@ public class EmployeeMenu {
             System.out.println("Cargo atualizado com sucesso.");
         }
 
+        printContinueButton();
         System.out.println();
+    }
+
+    private void printContinueButton() {
+        System.out.print("[Aperte Enter para continuar]");
+        scanner.nextLine();
     }
 }

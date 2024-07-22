@@ -32,6 +32,7 @@ class TextInterfaceTest {
             
             > \
             """;
+    String continueButtonText = "[Aperte Enter para continuar]\n";
 
     @BeforeEach
     void setUp() {
@@ -77,8 +78,8 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 "Saindo...\n");
 
@@ -116,8 +117,8 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 """
                 Nome do funcionário: \
@@ -125,16 +126,16 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 """
                 John Doe, HR Manager, R$\u00A01.500,00
                 John Smith, HR Supervisor, R$\u00A05.000,00
                 
                 A empresa possui 2 funcionários.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 "Saindo...\n");
 
@@ -204,8 +205,8 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 """
                 Nome do funcionário: \
@@ -213,16 +214,16 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 """
                 Nome do funcionário: \
                 Tem certeza que deseja remover o funcionário John Smith do sistema? (s/N)\s
                 > \
                 Funcionário removido com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 "Saindo...\n");
 
@@ -330,16 +331,16 @@ class TextInterfaceTest {
                 Salário mensal: \
                 
                 Funcionário adicionado com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 """
                 Digite um nome para o arquivo (Enter para cancelar): \
                 """ +
                 fileName + """
                 .csv salvo com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu + "Saindo...\n");
 
         String screen = outContent.toString();
@@ -437,8 +438,8 @@ class TextInterfaceTest {
                 Nome do arquivo: \
                 
                 Lista de funcionários carregada com sucesso.
-                [Continuar]
                 """ +
+                continueButtonText +
                 menu +
                 "Saindo...\n");
 

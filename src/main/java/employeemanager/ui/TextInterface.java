@@ -219,7 +219,7 @@ public class TextInterface {
     }
 
     private void printContinueButton() {
-        System.out.print("[Continuar]");
+        System.out.print("[Aperte Enter para continuar]");
         scanner.nextLine();
     }
 }
