@@ -336,6 +336,7 @@ class TextInterfaceTest {
                 menu +
                 """
                 Digite um nome para o arquivo (Enter para cancelar): \
+                
                 """ +
                 fileName + """
                 .csv salvo com sucesso.

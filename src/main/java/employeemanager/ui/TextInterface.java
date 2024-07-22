@@ -178,6 +178,7 @@ public class TextInterface {
         } else {
             System.out.print("Digite um nome para o arquivo (Enter para cancelar): ");
             String fileName = scanner.nextLine().strip();
+            System.out.println();
 
             if (fileName.isBlank()) {
                 System.out.println("Operação cancelada pelo usuário.");
