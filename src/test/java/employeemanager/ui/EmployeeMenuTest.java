@@ -17,8 +17,13 @@ class EmployeeMenuTest {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     Employee testEmployee = new Employee("John Smith", "HR Manager", new BigDecimal("3000.00"));
-    String menu = """
-            John Smith - Funcionário
+    String title = "* " + testEmployee.getName() + " - Funcionário *";
+    String menu = "*".repeat(title.length()) +
+            "\n" +
+            title +
+            "\n" +
+            "*".repeat(title.length()) + """
+            
             
             [1] Ver informações sobre funcionário
             [2] Alterar cargo do funcionário
