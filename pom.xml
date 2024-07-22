@@ -6,7 +6,7 @@
 
     <groupId>employeemanager</groupId>
     <artifactId>EmployeeManager</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.2.0-alpha</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
