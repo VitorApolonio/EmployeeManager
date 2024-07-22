@@ -63,6 +63,7 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500.00
+                
                 x
                 """;
 
@@ -74,8 +75,9 @@ class TextInterfaceTest {
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 "Saindo...\n");
@@ -92,10 +94,12 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500.00
+                
                 3
                 John Smith
                 HR Supervisor
                 5000.00
+                
                 1
                 
                 x
@@ -110,16 +114,18 @@ class TextInterfaceTest {
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 """
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 """
@@ -144,13 +150,16 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500.00
+                
                 3
                 John Smith
                 HR Supervisor
                 5000.00
+                
                 4
                 John Smith
                 s
+                
                 x
                 """;
 
@@ -170,13 +179,16 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500.00
+                
                 3
                 John Smith
                 HR Supervisor
                 5000.00
+                
                 4
                 John Smith
                 s
+                
                 x
                 """;
 
@@ -190,16 +202,18 @@ class TextInterfaceTest {
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 """
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 """
@@ -207,7 +221,7 @@ class TextInterfaceTest {
                 Tem certeza que deseja remover o funcionário John Smith do sistema? (s/N)\s
                 > \
                 Funcionário removido com sucesso.
-                
+                [Continuar]
                 """ +
                 menu +
                 "Saindo...\n");
@@ -225,10 +239,12 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500.00
+                
                 5
                 """ +
                 fileName +
                 """
+                
                 
                 x
                 """;
@@ -256,10 +272,12 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500
+                
                 5
                 """ +
                 fileName +
                 """
+                
                 
                 x
                 """;
@@ -290,10 +308,12 @@ class TextInterfaceTest {
                 John Doe
                 HR Manager
                 1500
+                
                 5
                 """ +
                 fileName +
                 """
+                
                 
                 x
                 """;
@@ -308,8 +328,9 @@ class TextInterfaceTest {
                 Nome do funcionário: \
                 Cargo do funcionário: \
                 Salário mensal: \
-                Funcionário adicionado com sucesso.
                 
+                Funcionário adicionado com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 """
@@ -317,7 +338,7 @@ class TextInterfaceTest {
                 """ +
                 fileName + """
                 .csv salvo com sucesso.
-                
+                [Continuar]
                 """ +
                 menu + "Saindo...\n");
 
@@ -339,15 +360,13 @@ class TextInterfaceTest {
                 """ +
                 fileName + """
                 
+                
                 x
                 """;
 
         Scanner scanner = new Scanner(inputs);
         EmployeeManager manager = new EmployeeManager();
         TextInterface text = new TextInterface(scanner, manager);
-
-        File file = new File(fileName + ".csv");
-        file.createNewFile();
 
         String testContent = """
             Bob,HR Manager,2000
@@ -356,6 +375,10 @@ class TextInterfaceTest {
             """;
 
         FileWriter writer = new FileWriter(fileName + ".csv");
+
+        File file = new File(fileName + ".csv");
+        file.createNewFile();
+
         writer.write(testContent);
         writer.close();
 
@@ -380,6 +403,7 @@ class TextInterfaceTest {
                 """ +
                 fileName + """
                 
+                
                 x
                 """;
 
@@ -387,8 +411,7 @@ class TextInterfaceTest {
         EmployeeManager manager = new EmployeeManager();
         TextInterface text = new TextInterface(scanner, manager);
 
-        File file = new File(fileName + ".csv");
-        file.createNewFile();
+
 
         String testContent = """
             Bob,HR Manager,2000
@@ -397,6 +420,10 @@ class TextInterfaceTest {
             """;
 
         FileWriter writer = new FileWriter(fileName + ".csv");
+
+        File file = new File(fileName + ".csv");
+        file.createNewFile();
+
         writer.write(testContent);
         writer.close();
 
@@ -408,8 +435,9 @@ class TextInterfaceTest {
 
         String expected = fixNewLine(menu + """
                 Nome do arquivo: \
-                Lista de funcionários carregada com sucesso.
                 
+                Lista de funcionários carregada com sucesso.
+                [Continuar]
                 """ +
                 menu +
                 "Saindo...\n");

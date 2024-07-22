@@ -83,34 +83,34 @@ public class TextInterface {
             } else {
                 System.out.println("A empresa possui " + manager.getEmployees().size() + " funcionários.");
             }
-
-            System.out.print("[Continuar]");
-            scanner.nextLine();
         }
 
+        printContinueButton();
         System.out.println();
     }
 
     private void findEmployee() {
         if (manager.getEmployees().isEmpty()) {
             System.out.println("Não há funcionários no sistema.");
-            System.out.println();
-            return;
-        }
-
-        System.out.print("Nome do funcionário: ");
-        String name = scanner.nextLine().strip();
-        System.out.println();
-
-        if (manager.hasEmployee(name)) {
-            Employee employee = manager.findByName(name);
-            EmployeeMenu employeeMenu = new EmployeeMenu(scanner, employee);
-
-            employeeMenu.start();
         } else {
-            System.out.println("Funcionário " + name + " não encontrado.");
+            System.out.print("Nome do funcionário: ");
+            String name = scanner.nextLine().strip();
+            System.out.println();
+
+            if (manager.hasEmployee(name)) {
+                Employee employee = manager.findByName(name);
+                EmployeeMenu employeeMenu = new EmployeeMenu(scanner, employee);
+
+                employeeMenu.start();
+
+                // Returns after leaving the employee menu so the continue button doesn't get printed
+                return;
+            } else {
+                System.out.println("Funcionário " + name + " não encontrado.");
+            }
         }
 
+        printContinueButton();
         System.out.println();
     }
 
@@ -131,15 +131,16 @@ public class TextInterface {
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Número inválido (obs. use um ponto como separador decimal).");
-                System.out.println();
             }
         }
 
         Employee newEmployee = new Employee(name, jobTitle, salary);
 
         manager.add(newEmployee);
+        System.out.println();
 
         System.out.println("Funcionário adicionado com sucesso.");
+        printContinueButton();
         System.out.println();
     }
 
@@ -166,6 +167,7 @@ public class TextInterface {
             }
         }
 
+        printContinueButton();
         System.out.println();
     }
 
@@ -189,12 +191,14 @@ public class TextInterface {
             }
         }
 
+        printContinueButton();
         System.out.println();
     }
 
     private void loadEmployeeList() {
         System.out.print("Nome do arquivo: ");
         String fileName = scanner.nextLine().strip();
+        System.out.println();
 
         File file = new File(fileName + ".csv");
 
@@ -210,6 +214,12 @@ public class TextInterface {
             System.out.println("Arquivo " + fileName + ".csv não encontrado.");
         }
 
+        printContinueButton();
         System.out.println();
+    }
+
+    private void printContinueButton() {
+        System.out.print("[Continuar]");
+        scanner.nextLine();
     }
 }
