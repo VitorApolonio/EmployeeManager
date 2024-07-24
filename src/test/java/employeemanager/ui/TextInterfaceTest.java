@@ -413,8 +413,6 @@ class TextInterfaceTest {
         EmployeeManager manager = new EmployeeManager();
         TextInterface text = new TextInterface(scanner, manager);
 
-
-
         String testContent = """
             Bob,HR Manager,2000
             John,CEO,15000
@@ -443,6 +441,56 @@ class TextInterfaceTest {
                 continueButtonText +
                 menu +
                 "Saindo...\n");
+
+        Assertions.assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void find_employees_prints_correctly() {
+        String inputs = """
+                3
+                John Doe
+                HR Manager
+                1500
+                
+                2
+                John Doe
+                x
+                x
+                """;
+
+        Scanner scanner = new Scanner(inputs);
+        EmployeeManager manager = new EmployeeManager();
+        TextInterface text = new TextInterface(scanner, manager);
+
+        text.start();
+
+        String expected = fixNewLine(menu + """
+                Nome do funcionário: \
+                Cargo do funcionário: \
+                Salário mensal: \
+                
+                Funcionário adicionado com sucesso.
+                """ +
+                continueButtonText +
+                menu + """
+                Nome do funcionário: \
+                
+                **************************
+                * John Doe - Funcionário *
+                **************************
+                
+                [1] Ver informações sobre funcionário
+                [2] Alterar cargo do funcionário
+                [3] Alterar salário do funcionário
+                [x] Voltar
+            
+                > \
+                """ +
+                menu +
+                """
+                Saindo...
+                """);
 
         Assertions.assertEquals(expected, outContent.toString());
     }
